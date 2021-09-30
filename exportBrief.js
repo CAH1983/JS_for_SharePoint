@@ -1,5 +1,5 @@
 console.log('exportBrief.js is connected');
-// TODO: add logo, format Date/Time data, remove gutter between the table row columns, style the word doc
+// TODO: add logo, remove gutter between the table row columns, style the word doc
 
 // added this function because sp.js wouldn't load
 function Getdata() {
@@ -112,7 +112,7 @@ function retrOnQuerySucceeded() {
   const commercialType = targetListItem.get_item('CommercialType');
 
   // set the HTML structure
-  bodyHTML = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Export Brief to Word doc</title></head><body style='font-family: Calibri'><div><div style='text-align: center;align-items: center;'><h1> CREATION HUB </h1><br> <table>";
+  bodyHTML = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Export Brief to Word doc</title></head><body style='font-family: Calibri'><div><div style='text-align: center;align-items: center;'><h1 style='background-color: #4E4B5C; color: #FFFFFF; padding: 25px'> CREATION HUB </h1><img style='width:250px' src='/sites/Sandbox/UK-Radio-CreationHub/SiteAssets/CH-Logo.png'><br> <table style='font-family: Calibri;' cellspacing='0'>`;
 
   const fieldsObj = {
     'Brief name': briefName,
@@ -178,27 +178,27 @@ function retrOnQuerySucceeded() {
   for (let key in fieldsObj) {
     // conditional to sort them by Streams category
     if (key.includes('Other useful information')) {
-      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #EA9E8D; padding: 20px'><h2> CREATIVE</h2></tr>`;
+      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #EA9E8D;  color: #FFFFFF; padding: 10px'><h2> CREATIVE</h2></tr>`;
     }
     if (key.includes('End Date')) {
-      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #677db7; padding: 20px'><h2> DIGITAL </h2></tr>`;
+      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #677db7;  color: #FFFFFF; padding: 10px'><h2> DIGITAL </h2></tr>`;
     }
     if (key.includes('Production type')) {
-      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #B5D6D6; padding: 20px'><h2> AUDIO PRODUCTION </h2></tr>`;
+      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #4381C1;  color: #FFFFFF; padding: 10px'><h2> AUDIO PRODUCTION </h2></tr>`;
     }
     if (key.includes('Campaign suggestions & revelant additional information')) {
-      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #FAC05E; padding: 20px'><h2> S&P </h2></tr>`;
+      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #FAC05E;  color: #FFFFFF; padding: 10px'><h2> S&P </h2></tr>`;
     }
     if (key.includes('Commercial type')) {
-      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #AF7595; padding: 20px'><h2> SALES SUPPORT </h2></tr>`;
+      bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #AF7595;  color: #FFFFFF; padding: 10px'><h2> SALES SUPPORT </h2></tr>`;
     }
     if (fieldsObj[key] === null) {
       fieldsObj[key] = ''
     };
 
     bodyHTML += `<tr style='border: 1px solid #3777ff; padding: 20px'>
-        <td style='border: 1px solid #3777ff; width: 80px; padding: 20px'> ${key}</td>
-        <td style='border: 1px solid #3777ff; padding: 20px'> ${fieldsObj[key]} </td>
+        <td style='border: 1px solid #4E4B5C; padding: 20px' width='100'><b>${key}</b></td>
+        <td style='border: 1px solid #4E4B5C; padding: 20px'> ${fieldsObj[key]} </td>
         </tr>`;
   }
 
