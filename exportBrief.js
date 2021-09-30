@@ -12,19 +12,20 @@ function Getdata() {
 
 // TODO: Store brief ID in a variable ->  uncomment this code when push on prod
 
-const briefNum = (() => {
-  // look for the URL parameter/value
-  let query = window.location.search.substring(1);
-  // create array with param and value
-  let numArr = query.split('=');
-  // returns brief ID
-  return numArr[1];
-})()
+// const briefNum = (() => {
+//   // look for the URL parameter/value
+//   let query = window.location.search.substring(1);
+//   // create array with param and value
+//   let numArr = query.split('=');
+//   // returns brief ID
+//   return numArr[1];
+// })()
 
 
 // Convert 'False' into 'No', 'True' into 'Yes'
 function convertToYesNo(value) {
-  value == false ? str = 'No' : value = 'Yes'
+  (value == false) ? value = 'No': value = 'Yes'
+  return value
 }
 
 // Convert to Date time friendly display
@@ -191,6 +192,9 @@ function retrOnQuerySucceeded() {
     if (key.includes('Commercial type')) {
       bodyHTML += `<tr style='border: 1px solid #3777ff; background-color: #AF7595; padding: 20px'><h2> SALES SUPPORT </h2></tr>`;
     }
+    if (fieldsObj[key] === null) {
+      fieldsObj[key] = ''
+    };
 
     bodyHTML += `<tr style='border: 1px solid #3777ff; padding: 20px'>
         <td style='border: 1px solid #3777ff; width: 80px; padding: 20px'> ${key}</td>
